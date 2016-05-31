@@ -1,7 +1,8 @@
-package org.arquillian.example;
+package org.arquillian.example.greeting;
+
+import org.arquillian.example.PhraseBuilder;
 
 import javax.inject.Inject;
-import java.io.PrintStream;
 
 public class Greeter {
 
@@ -12,11 +13,11 @@ public class Greeter {
         this.phraseBuilder = phraseBuilder;
     }
 
-    public void greet(PrintStream to, String name) {
-        to.println(createGreeting(name));
-    }
-
     public String createGreeting(String name) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Can not greet null name");
+        }
+
         return phraseBuilder.buildPhrase("hello", name);
     }
 }

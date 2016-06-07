@@ -19,7 +19,7 @@ abstract class TestBase {
     public static WebArchive createDeployment() {
         WebArchive war = ShrinkWrap.create(WebArchive.class, "testing.war")
                 .addPackages(true, "com.aesireanempire.hello")
-                .addAsWebInfResource("WEB-INF/web.xml","web.xml");
+                .addAsWebInfResource("web.xml","web.xml");
 
         LOG.info("######################################");
         LOG.info(war.toString(true));

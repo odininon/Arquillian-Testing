@@ -1,4 +1,4 @@
-package org.arquillian.example;
+package com.aesireanempire.sit;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.test.api.ArquillianResource;
@@ -10,28 +10,26 @@ import org.slf4j.LoggerFactory;
 import java.net.URL;
 
 
-public class TestBase {
+abstract class TestBase {
     private static final Logger LOG = LoggerFactory.getLogger(TestBase.class);
-
     @ArquillianResource
     private URL deploymentUrl;
 
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
-
         WebArchive war = ShrinkWrap.create(WebArchive.class, "testing.war")
-                .addPackages(true, "org.arquillian.example")
-                .addAsWebInfResource("META-INF/beans.xml", "beans.xml")
-                .addAsWebInfResource("web.xml");
+                .addPackages(true, "com.aesireanempire.hello")
+                .addAsWebInfResource("WEB-INF/web.xml","web.xml");
 
-        LOG.info("##################################################");
+        LOG.info("######################################");
         LOG.info(war.toString(true));
-        LOG.info("##################################################");
+        LOG.info("######################################");
+
         return war;
     }
-
 
     String getBaseURL() {
         return deploymentUrl.toString();
     }
+
 }

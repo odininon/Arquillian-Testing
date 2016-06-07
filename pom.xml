@@ -9,6 +9,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <tomcat.version>8.0.28</tomcat.version>
     </properties>
 
     <build>
@@ -42,11 +43,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.jboss.spec</groupId>
-            <artifactId>jboss-javaee-6.0</artifactId>
-            <version>3.0.3.Final</version>
-            <type>pom</type>
-            <scope>provided</scope>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-guice</artifactId>
+            <version>3.0.17.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-Multibindings</artifactId>
+            <version>4.0</version>
         </dependency>
 
         <!-- Testing -->
@@ -61,36 +66,56 @@
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>org.apache.openejb</groupId>
-            <artifactId>arquillian-tomee-embedded</artifactId>
-            <version>1.7.4</version>
+            <groupId>org.jboss.arquillian.container</groupId>
+            <artifactId>arquillian-tomcat-embedded-8</artifactId>
+            <version>1.0.0.CR7</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.openejb</groupId>
-            <artifactId>tomee-embedded</artifactId>
-            <version>1.7.4</version>
-            <scope>test</scope>
-        </dependency>
-        <!--Required for WebServices and RESTful WebServices-->
-        <dependency>
-            <groupId>org.apache.openejb</groupId>
-            <artifactId>tomee-webservices</artifactId>
-            <version>1.7.4</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.openejb</groupId>
-            <artifactId>tomee-jaxrs</artifactId>
-            <version>1.7.4</version>
-            <scope>test</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-bundle-jaxrs</artifactId>
             <version>2.7.18</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- TOMCAT EMBEDDED -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-logging-juli</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jasper</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jasper-el</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jsp-api</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
         </dependency>
     </dependencies>
 </project>
